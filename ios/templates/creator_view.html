@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+<style>
+    body {
+    background-color: #1d1d1d;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.page-description {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #3d3d3d;
+    padding: 20px 30px;
+    margin: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+background-color: #5d5d5d;
+}
+
+.create-studio {
+background-color: #4a8af4;
+}
+
+.create-studio:hover {
+background-color: #6ba4f4;
+}
+
+.studio-management {
+background-color: #f4a64a;
+}
+
+.studio-management:hover {
+background-color: #f4be6a;
+}
+
+.fundraising {
+background-color: #4af49e;
+}
+
+.fundraising:hover {
+background-color: #6af4b0;
+}
+
+.page-description {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #4a8af4;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.page-description::first-letter {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+</style>
+<div class="container">
+    <h1 class="page-title">Creator View</h1>
+    <p class="page-description">
+    <!-- Add your summarized description here -->
+    Incentive Network provides definitions, boundaries, and key properties to help creators grasp the decentralized approach to creating and distributing content, as well as its differences from traditional paradigms.
+    </p>
+    <p class='page-description'>
+    IOS framework that enables creators to launch their own onchain studios quickly and efficiently. Incentive Network's framework acts as a kernel that can be upgraded and replaced to suit different stages and categories of studios. This lowers the barrier to entry and standardizes creator behavior while providing common interfaces for complementary infrastructure.
+    </p>    
+    <p class='page-description'>
+    Governance middleware, that links governance processes and players to enable functions like guidance, representation, and feedback for players and creators. These facilities increase the sustainability and stability of the entire ecosystem.
+    </p>
+
+    <div class="button-container">
+        <a href="{% url 'create_studio' %}" class="button create-studio"><i class="fas fa-plus-circle"></i> Create Studio</a>
+        <a href="{% url 'studio_index' %}" class="button studio-management"><i class="fas fa-cogs"></i> Studio Management</a>
+        <a href="#" class="button fundraising"><i class="fas fa-hand-holding-usd"></i> Fundraising</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>Project Overview</h2>
+        <div class="studio-grid" style="display: flex; flex-wrap: wrap; justify-content: space-between">
+            {% for studio in studios %}
+                <a href="{% url 'rate_studio_page' studio_id=studio.id %}" class="studio-card-link" style="width: 20% ;gap: 30px;">
+                    <div class="studio-card" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';">
+                        <img src="https://via.placeholder.com/300" alt="{{ studio.name }} Introduction Picture" style="width: 100%; height: auto;" />
+                        <h3>{{ studio.name }}</h3>
+                        {% if studio.is_active %}
+                            <p>Current Rating: {{ studio.current_rating }}</p>
+                        {% else %}
+                            <p>Current Rating: <span class="inactive-label">Inactive</span></p>
+                        {% endif %}
+                        <p class="small-text">Rating Status: {{ studio.assessment_size }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

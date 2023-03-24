@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-7">
+      <h2>Upgrade to iOS</h2>
+      <p>Please select the iOS version you want to upgrade to, and then click the "Upgrade" button.</p>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="ios_version">iOS Version:</label>
+          <select class="form-control" id="ios_version" name="ios_version" style="width: 50%;">
+            <option value="X1">iOS X1</option>
+            <option value="X2">iOS X2</option>
+            <option value="X3">iOS X3</option>
+            <option value="N">iOS N</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Upgrade</button>
+      </form>
+    </div>
+    <div class="col-md-5" style="padding: 10px;">
+
+      <div class="card" style="background-color: #5400db; padding: 20px;">
+        <div style="font-size: 24px; margin-bottom: 15px;"><strong>Features of iOS</strong></div>
+        <ul style="list-style-type: disc;">
+          <li><strong>Easy to learn:</strong> iOS has a stock-like design, which is easy to understand.</li>
+          <li><strong>Homogeneity:</strong> Homogeneity ensures comparability of studios and can share model security. Homogeneous standards help build support infrastructure.</li>
+          <li><strong>Operating without trust:</strong> Creators don't need to use endorsement to launch studios. The P-layer will fulfill the regulatory function through supervising methods. The P-layer controls, prohibits, and punishes creators' potential fraudulent behavior.</li>
+          <li><strong>The X token:</strong> The X token is the core token of iOS, capturing 100% of studio revenue and having governance and ownership of the studio. The sale of X tokens by the creator is considered financing.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

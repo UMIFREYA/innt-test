@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="notice">
+        <p>先删除所有数据，再初始化，否则无法匹配agent wallet，手动模式比较稳定，以后再改成自动模式</p>
+    </div>
+    <p>Welcome, {{ user.username }}!</p>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Logout">
+    </form>
+    <br>
+
+
+<a href="{% url 'clear_data' %}"><button>Clear All data</button></a>
+    <a href="{% url 'initialize' %}"><button>initialize</button></a>
+    <a href="{% url 'initialize_sorter' %}"><button>initialize_sorter</button></a>
+    <a href="{% url 'create_studio' %}"><button>Creator-create_studio</button></a>
+    <a href="{% url 'studio_index' %}"><button>Creator-studio_index</button></a>
+
+    <a href="{% url 'studio_overview' %}"><button>Player-studio overview</button></a>
+    <a href="{% url 'personal_page'  user_id=user.id %}"><button>Player-personal page</button></a>
+    <a href="{% url 'landing' %}"><button>Landing page</button></a>
+
+    
+{% else %}
+    <a href="{% url 'register' %}"><button>Register</button></a>
+    <a href="{% url 'login' %}"><button>Login</button></a>
+{% endif %}
+{% endblock %}
+
+{% block styles %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f1;
+    }
+    .notice {
+        background-color: #fff3cd;
+        border: 1px solid #ffeeba;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    button {
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        margin: 10px;
+    }
+    button:hover {
+        background-color: #3e8e41;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Create Studio</h1>
+  <form method="post">
+    {% csrf_token %}
+    <div>
+      <label for="name">Studio Name:</label>
+      <input type="text" name="name" id="name">
+    </div>
+    <div class="description-input">
+      <label for="description">Studio Description:</label>
+      <textarea name="description" id="description"></textarea>
+    </div>
+    <div class="description-preview">
+      <h3>Preview</h3>
+      <div id="preview"></div>
+    </div>
+    <button type="submit">Create</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+  <script>
+    const converter = new showdown.Converter();
+    const descriptionInput = document.querySelector('#description');
+    const preview = document.querySelector('#preview');
+
+    descriptionInput.addEventListener('input', () => {
+      const markdownText = descriptionInput.value;
+      const htmlText = converter.makeHtml(markdownText);
+      preview.innerHTML = htmlText;
+    });
+  </script>
+
+  <style>
+    .description-input {
+      width: 60%;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .description-input label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .description-input textarea {
+      width: 100%;
+      height: 300px;
+      padding: 5px;
+      font-size: 16px;
+      line-height: 1.5;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .description-preview {
+      width: 35%;
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 20px;
+    }
+
+    .description-preview h3 {
+      margin-top: 0;
+    }
+
+    .description-preview #preview {
+      font-size: 16px;
+      line-height: 1.5;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+    }
+  </style>
+{% endblock %}

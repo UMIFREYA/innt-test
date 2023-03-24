@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+    <div class="personal-info">
+        <h2>个人信息</h2>
+        <img src="https://via.placeholder.com/150" alt="User avatar" width="150" height="150" />
+        <p>名称: {{ user.username }}</p>
+        <p>Influence Score: {{ influence.score }}</p>
+    </div>
+
+    <div class="token-balances">
+        <h2>Private Wallet Token Balances</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Token名称</th>
+                    <th>Token数量</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for token_balance in token_balances %}
+                    <tr>
+                        <td>{{ token_balance.x_token.name }}</td>
+                        <td>{{ token_balance.balance }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="incentive-proofs">
+        <h2>Incentive Proofs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Contribution Factor</th>
+                    <th>Studio Name</th>
+                    <th>Grade</th>
+                    <th>Studio Current Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for incentive_proof in incentive_proofs %}
+                    <tr>
+                        <td>{{ incentive_proof.contribution_factor }}</td>
+                        <td>{{ incentive_proof.studio.name }}</td>
+                        <td>{{ incentive_proof.grade }}</td>
+                        <td>{{ incentive_proof.studio.current_rating }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+
+
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ studio.name }} - Studio Wallet</h2>
+  <h3>X Token Balances:</h3>
+  <table>
+    <tr>
+      <th>Token</th>
+      <th>Balance</th>
+    </tr>
+    {% for token_balance in token_balances %}
+      <tr>
+        <td>{{ token_balance.x_token.name }}</td>
+        <td>{{ token_balance.balance }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h3>NFT Balances:</h3>
+  <table>
+    <tr>
+      <th>NFT</th>
+      <th>description</th>
+    </tr>
+    {% for NFT_balance in NFT_balances %}
+      <tr>
+        <td>{{ NFT_balance.nft.name }}</td>
+        <td>{{ NFT_balance.nft.description }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h3>Transfer Tokens:</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.receiver_wallet.label_tag }} {{ form.receiver_wallet }}
+    {{ form.token.label_tag }} {{ form.token }}
+    {{ form.amount.label_tag }} {{ form.amount }}
+    {{ form.reason.label_tag }} {{ form.reason }}
+    <div id="asset_name_div" style="display:none;">
+        {{ form.asset_name.label_tag }} {{ form.asset_name }}
+    </div>
+    <button type="submit" class="btn btn-primary">提交</button>
+  </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var reasonSelect = document.querySelector('#id_reason');
+      var assetNameDiv = document.querySelector('#asset_name_div');
+      function toggleAssetName() {
+        if (reasonSelect.value === 'Purchasing Asset') {
+          assetNameDiv.style.display = 'block';
+        } else {
+          assetNameDiv.style.display = 'none';
+        }
+      }
+      reasonSelect.addEventListener('change', toggleAssetName);
+      toggleAssetName();
+    });
+  </script>
+  {% if messages %}
+    <!-- ... -->
+  {% endif %}
+{% endblock %}

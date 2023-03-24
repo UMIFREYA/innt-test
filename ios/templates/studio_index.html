@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 style="color: #f8f9fa">Active Studios</h2>
+<table class="table">
+<thead>
+<tr>
+<th style="color: #f8f9fa">Name</th>
+<th style="color: #f8f9fa">Current Rating</th>
+<th style="color: #f8f9fa">Assessment Size</th>
+<th style="color: #f8f9fa"></th>
+</tr>
+</thead>
+<tbody>
+{% for studio in active_studios %}
+<tr>
+<td style="color: #d1d1d1">{{ studio.name }}</td>
+<td style="color: #d1d1d1">{{ studio.current_rating }}</td>
+<td style="color: #d1d1d1">{{ studio.assessment_size }}</td>
+<td><a href="{% url 'studio_manage' studio.pk %}" class="btn btn-primary">Manage</a></td>
+</tr>
+{% empty %}
+<tr>
+<td colspan="4" style="color: #d1d1d1">No active studios</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<h2 style="color: #f8f9fa">Inactive Studios</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="color: #f8f9fa">Name</th>
+            <th style="color: #f8f9fa">State</th>
+            <th style="color: #f8f9fa"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for studio in inactive_studios %}
+            <tr>
+                <td style="color: #d1d1d1">{{ studio.name }}</td>
+                <td style="color: #d1d1d1">Inactive studio, please go to manege page to upgrade to IOS.</td>
+                <td><a href="{% url 'studio_manage' studio.pk %}" class="btn btn-primary">Manage</a></td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4" style="color: #d1d1d1">No inactive studios</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

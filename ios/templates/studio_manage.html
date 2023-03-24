@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{ studio.name }}</h2>
+    <div id="description">{{ studio.description }}</div>
+    
+    {% if not studio.is_active %}
+        <p>Status: Inactive</p>
+        <a href="{% url 'upgrade_to_IOS' studio.pk %}" class="btn btn-primary">Upgrade to IOS</a>
+    {% else %}
+        <p>Status: Active</p>
+        <p>IOS Kernel: {{ studio.IOS_kernel }}</p>
+        <p>Studio Wallet: {{ studio.studio_wallet.name }}</p>
+        <p>Agent Wallet: {{ studio.agent_wallet.name }}</p>
+        <!-- Add more detailed information if needed -->
+        <a href="{% url 'studio_wallet_manage' studio.pk %}" class="btn btn-primary">Wallet Manage</a>
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+    <script>
+        const converter = new showdown.Converter();
+        const description = document.getElementById('description');
+        description.innerHTML = converter.makeHtml(description.innerHTML);
+    </script>
+{% endblock %}

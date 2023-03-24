@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+<style>
+    body {
+    background-color: #1d1d1d;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.page-description {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #3d3d3d;
+    padding: 20px 30px;
+    margin: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+background-color: #5d5d5d;
+}
+
+.studios-overview {
+background-color: #4a8af4;
+}
+
+.studios-overview:hover {
+background-color: #6ba4f4;
+}
+
+.personal-information {
+background-color: #da7b0f;
+}
+
+.personal-information:hover {
+background-color: #e2a440;
+}
+
+.trading-center {
+background-color: #00c462;
+}
+
+.trading-center:hover {
+background-color: #32c77c;
+}
+
+.page-description {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #4a8af4;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.page-description::first-letter {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+</style>
+<div class="container">
+    <h1 class="page-title">Player View</h1>
+    <p class="page-description">
+        <!-- Add your summarized description here -->
+        Incentive Network provides players with access to onchain studios, personal information, and a trading center. The platform's governance structure allows players to engage in various governance methods, including assessment, building, and supervising methods. Incentive Network also features a redistribution protocol to lower entry barriers and promote more equitable participation.
+    </p>
+    
+    <div class="button-container">
+        <a href="{% url 'studio_overview' %}" class="button studios-overview"><i class="fas fa-th"></i> Studios Overview</a>
+        <a href="{% url 'personal_page'  user_id=user.id %}" class="button personal-information"><i class="fas fa-user"></i> Personal Information</a>
+        <a href="#" class="button trading-center"><i class="fas fa-exchange-alt"></i> Trading Center</a>
+    </div>
+
+    <!-- Add a visually appealing diagram illustrating the governance structure and methods 
+    Suggested Diagram Structure:
+
+Create a large circle in the center of the diagram and label it "Governance Methods". This circle represents the core of the Incentive Network's governance structure.
+
+Draw three arrows originating from the central circle, each pointing toward a smaller circle. The arrows represent the flow of governance methods. Label the smaller circles as follows:
+
+"Assessment Method" (e.g., Voting, Investing, Forecasting)
+"Building Method" (e.g., Development, Testing, Design, Distribution)
+"Supervising Method" (e.g., Control over default risk, shorting inferior projects)
+Inside each smaller circle, include relevant icons or illustrations to represent the activities associated with each governance method. For example:
+
+Assessment Method: a voting ballot, a dollar sign, a crystal ball
+Building Method: a code icon, a wrench, a paintbrush, a distribution truck
+Supervising Method: a magnifying glass, a downward arrow, a shield
+Apply a clean, modern color scheme to the diagram, using colors that match-->
+ 
+
+</div>
+{% endblock %}

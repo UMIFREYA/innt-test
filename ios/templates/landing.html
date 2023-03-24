@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'ios/css/landing_page.css' %}">
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.header {
+    color: #fff;
+    background-color: #0025a0;
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.subheader {
+    color: #fff;
+    background-color: #555555;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.section {
+    margin-bottom: 1.5rem;
+}
+
+.section h3 {
+    margin-bottom: 0.5rem;
+}
+
+.section p {
+    margin-bottom: 1.5rem;
+}
+
+.section img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.section video {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.cta button {
+    background-color: #0025a0;
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.cta button:hover {
+    background-color: #1976d2;
+}
+
+</style>
+<div class="container">
+    <h1 class="header">Incentive Network</h1>
+    <h2 class="subheader">New Paradigm of Game Creation</h2>
+    <img src="{% static 'ios/images/Incentive.png' %}" alt="Incentive Network">
+    <section class="section pain-points">
+        <h3>Pain Points</h3>
+        <p>Creators and players face several pain points during the game creation process, including high barriers to entry, low efficiency, and a lack of influence and incentives. The existing game creation methods make it difficult for creators to find suitable resources and teams, as well as feedback and help. Similarly, players are often unable to participate in the game creation process or provide feedback and influence. These problems lead to potential creators and players being unable to enter the game creation industry, resulting in a decrease in game quality and player retention.</p>
+        <img src="{% static 'ios/images/pain_points.png' %}" alt="Pain Points">
+    </section>
+    
+    <section class="section how-to-change">
+        <h3>How to Change</h3>
+        <p>The key to solving these pain points is to transition from a closed game creation process to an open one. This requires creators and players to participate in the game creation process and receive feedback and incentives. Therefore, we propose a new game creation paradigm called "onchain studio," which includes a governable process and a governable middleware to achieve full-process governance of game creation.</p>
+        <video controls>
+            <source src="{% static 'ios/videos/how_to_change.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+    
+    <section class="section new-paradigm">
+        <h3>New Paradigm</h3>
+        <p>Onchain studio is a fully governable game creation paradigm that differs from traditional companies by having a fully governable process. By introducing governance mechanisms, players can participate in the game creation process, thereby improving efficiency and game quality. Onchain studio consists of three parts: concept, framework, and supporting facilities. Creators only need to follow three steps to use onchain studio to create games.</p>
+        <img src="{% static 'ios/images/new_paradigm.png' %}" alt="New Paradigm">
+        </section>
+        <section class="section new-paradigm-overview">
+            <h3>New Paradigm Overview</h3>
+            <p>The onchain studio structure diagram shows how players can participate in the game creation process. Governance methods are mainly divided into three categories: evaluation, collaboration, and supervision. By redistributing protocols, we can match industry chain resources with the player layer, reducing the barriers to entry for the player layer regarding resources. This can expand the player layer's scale and provide better stability and security for the entire ecosystem.</p>
+            <img src="{% static 'ios/images/new_paradigm_overview.png' %}" alt="New Paradigm Overview">
+        </section>
+        
+        <section class="section benefits">
+            <h3>Benefits of Onchain Studio</h3>
+            <ul>
+                <li>Lower barriers to entry for creators and players</li>
+                <li>Increased efficiency and game quality</li>
+                <li>More opportunities for feedback and influence</li>
+                <li>Transparent and fair governance process</li>
+                <li>Increased security and stability for the ecosystem</li>
+            </ul>
+        </section>
+        
+        <section class="section cta">
+            <h3>Get Started with Onchain Studio</h3>
+            <a href="{% url 'creator_view' %}"><button>Creator View</button></a>
+        </section>
+        <section class="section cta">
+            <h3>Become a Player & Curator</h3>
+            <a href="{% url 'player_view' %}"><button>P-layer View</button></a>
+        </section>
+    </div>
+    {% endblock %}

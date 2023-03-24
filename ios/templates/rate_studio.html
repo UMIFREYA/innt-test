@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between;">
+<div style="width: 50%; font-family: Arial, sans-serif; font-size: 20px;">
+<h2>{{ studio.name }}</h2>
+<div id="description">{{ studio.description }}</div>
+<p>iOS version: {{ studio.IOS_kernel }}</p>
+<p>Studio Wallet Balance</p>
+<table>
+<tr>
+<th>Tokens</th>
+<th>Balance</th>
+</tr>
+{% for token in tokens %}
+<tr>
+<td>{{token.x_token.name}}</td>
+<td>{{ token.balance }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<table>
+<tr>
+<th>NFTs</th>
+<th>Description</th>
+</tr>
+{% for nft in NFTs %}
+<tr>
+<td>{{ nft.nft.name }}</td>
+<td>{{ nft.nft.description }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+<div style="width: 50%; font-family: Arial, sans-serif; font-size: 16px;">
+<img src="https://via.placeholder.com/350x150" alt="Project Image" style="width: 100%; height: auto; margin-bottom: 20px;">
+<p>Current Rating: {{ studio.current_rating }}</p>
+<p>Rating Status: {{ studio.assessment_size }}</p>
+<p>Your A token balance: {{ user_a_token_balance.balance }}</p>
+        <form method="post" action="{% url 'rate_studio' studio.pk %}">
+            {% csrf_token %}
+            <label for="grade">Rate (1-10):</label>
+            <input type="number" name="grade" min="1" max="10" required>
+
+            <label for="a_token_amount">A token amount:</label>
+            <input type="number" name="a_token_amount" min="1" max="{{ user_a_token_balance.balance }}" required>
+
+            <input type="submit" value="Submit Rating">
+        </form>
+
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+    <script>
+        const converter = new showdown.Converter();
+        const description = document.getElementById('description');
+        description.innerHTML = converter.makeHtml(description.innerHTML);
+    </script>
+{% endblock %}
